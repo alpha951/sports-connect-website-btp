@@ -2,6 +2,7 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const PORT = process.env.PORT | 3000;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,8 +25,8 @@ mongoose
   )
   .then(() => {
     console.log("App connected to database");
-    app.listen(5000, function () {
-      console.log("server started");
+    app.listen(PORT, function () {
+      console.log(`App listening on port ${PORT}!`);
     });
   })
   .catch((error) => {
