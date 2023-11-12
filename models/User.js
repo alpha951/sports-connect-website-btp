@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema(
     },
     state: String,
     city: String,
-    intrests: {
+    interests: {
       type: [String],
     },
     contactNo: String,
