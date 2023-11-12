@@ -16,31 +16,32 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 
 ## API Endpoints
+- [x] [POSTMAN Workspace Link](https://www.postman.com/avionics-astronomer-93868069/workspace/hobby-projects/collection/27853841-fda7f482-bc0c-4839-86d5-258af4fa2e53?action=share&creator=27853841) 
 
 ### auth
 
-1.  [POST] /auth/register
+1.  <b>[POST] /auth/register </b>
 
 ```bash
     example : req.body 
-
-        name:player1  [required]
-        email:p1@mail.com [required]
-        password:player1@123 [required]
-        gender:Male     [required, enums :{Male, Female, Other}]
-        state:Rajasthan
-        city:Jaipur
-        interests:[Cricket, Football]
-        age : 21
-        contactNo:12345
-        skillLevels:Advanced
-
+    {
+        "name": "player1",  #required
+        "email": "p1@mail.com", #required
+        "password": "player1@123", #required
+        "gender": "Male", #required , enum = [Male, Female, Other]
+        "state": "Rajasthan",
+        "city": "Jaipur",
+        "interests": ["Cricket", "Football"],
+        "age": 21,
+        "contactNo": "12345",
+        "skillLevels": "Advanced"
+    }
     response : jwt-token
 
 ```
 
 
-2. [POST] /auth/login
+2. <b>[POST] /auth/login</b>
     
 ```bash
     example : req.body 
@@ -48,7 +49,7 @@ These instructions will get you a copy of the project up and running on your loc
         password:player1@123
     response : jwt-token
 ```
-3. [POST] /play/create-event
+3. <b>[POST] /play/create-event</b>
 
 ```bash
     req.headers[authorization] = jwt-token
@@ -80,7 +81,7 @@ These instructions will get you a copy of the project up and running on your loc
                     }
                 }
 ```
-4. [GET] /play/getplayers
+4. <b>[GET] /play/getplayers</b>
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
@@ -127,9 +128,127 @@ These instructions will get you a copy of the project up and running on your loc
         ]
     }
 ```
-5.  
+5.  <b>[PATCH]/play/editprofile</b>
+```bash
+    req.headers[authorization] = jwt-token
+    example : req.body
+        {
+            "name": "player1",
+            "email": "p1_new@mail.com",
+        }
+    response :
+        {
+            "data": {
+                "_id": "6550c3428caab57739826338",
+                "name": "player1_new",
+                "email": "p1_new@mail.com",
+                "password": "$2a$10$gT8zNTJWeBgf1wzMZrhSWOWfTmxMKrwOkNNYtkBIukvHbHj7DAXn6",
+                "gender": "Male",
+                "state": "Rajasthan",
+                "city": "Jaipur",
+                "interests": [
+                    "[Cricket, Football]"
+                ],
+                "contactNo": "12345",
+                "skillLevels": "Advanced",
+                "createdAt": "2023-11-12T12:21:22.423Z",
+                "updatedAt": "2023-11-12T16:26:12.067Z",
+                "__v": 0
+        }
+}
+```
+6. <b>[POST]/academy/add-academy</b>
+```bash
+    req.headers[authorization] = jwt-token
+    example : req.body
+        {
+            "name": "academy1", #required
+            "sports": ["Cricket", "Football"], #required
+            "city" : "Jaipur", #required
+            "state" : "Rajasthan", #required
+            "address": "Area 51",
+        }
+    response :
+        {
+            "data": {
+                "name": "academy1",
+                "sports": [
+                    "Cricket",
+                    "Football"
+                ],
+                "state": "Rajasthan",
+                "city": "Jaipur",
+                "address": "Area 51",
+                "createdBy": "6550c3428caab57739826338",
+                "_id": "6550fdedde22f6f2fe679e8b",
+                "createdAt": "2023-11-12T16:31:41.969Z",
+                "updatedAt": "2023-11-12T16:31:41.969Z",
+                "__v": 0
+        }
+}
+```
+7. <b>[POST]/academy/get-academy</b>
+```bash
+    req.headers[authorization] = jwt-token
+    example : req.body
+        {
+            "city" : "Jaipur", #required
+            "state" : "Rajasthan", #required
+            "sports" : "Cricket", #required
+        }
+    response:
+        {
+            "data": [
+                {
+                    "_id": "6550fdedde22f6f2fe679e8b",
+                    "name": "academy1",
+                    "sports": [
+                        "Cricket",
+                        "Football"
+                    ],
+                    "state": "Rajasthan",
+                    "city": "Jaipur",
+                    "address": "Area 51",
+                    "createdBy": "6550c3428caab57739826338",
+                    "createdAt": "2023-11-12T16:31:41.969Z",
+                    "updatedAt": "2023-11-12T16:31:41.969Z",
+                    "__v": 0
+                }
+            ]
+        }
 
-
+```
+8. <b>[PATCH]/academy/update-academy/:id</b>
+```bash
+    req.headers[authorization] = jwt-token
+    example : req.body
+        {
+            "name": "academy-new", #optional
+            "sports": ["Cricket", "Football", "Tennis"], #optional
+            "city" : "Jaipur", #optional
+            "state" : "Rajasthan", #optional
+            "address": "Area 51", #optional
+        }
+    response:
+        {
+            "data": {
+                "_id": "6550fdedde22f6f2fe679e8b",
+                "name": "academy-new",
+                "sports": [
+                    "Cricket",
+                    "Football",
+                    "Tennis"
+                ],
+                "state": "Rajasthan",
+                "city": "Jaipur",
+                "address": "Area 51",
+                "createdBy": "6550c3428caab57739826338",
+                "createdAt": "2023-11-12T16:31:41.969Z",
+                "updatedAt": "2023-11-12T16:40:14.091Z",
+                "__v": 0
+            }
+        }
+```
 
 ## Models   
 
