@@ -5,14 +5,13 @@ const auth = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   try {
     const token = authHeader;
-    const payLoad = jwt.verify(token, "jwtsecret");
+    const payLoad = jwt.verify(token, process.env.JWT_SECRET);
     req.user = {
       userId: payLoad.userId,
       name: payLoad.name,
     };
     next();
   } catch (err) {
-    // next(err)
     res.send("error");
   }
 };
