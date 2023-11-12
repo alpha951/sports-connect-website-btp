@@ -271,6 +271,7 @@ user {
   state string
   city string
   contactNo string
+  interests string[]
   skillLevel string
 }
 
@@ -279,7 +280,7 @@ event {
   time timestamp
   state string
   city string
-  interests string
+  interests string[]
   skillLevels string
   createdBy string fk
 }
@@ -287,7 +288,7 @@ event {
 academy {
   id string pk
   name string
-  sports string
+  sports string[]
   state string
   city string
   address string
@@ -296,6 +297,5 @@ academy {
 
 event.createdBy < user.id
 academy.createdBy < user.id
-
 ```
 [View on Eraser![](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL/preview?elements=sufHpUTo59e4Y1nD_jNnCw&type=embed)](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=sufHpUTo59e4Y1nD_jNnCw)
