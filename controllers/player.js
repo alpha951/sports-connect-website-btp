@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Event = require("../models/Event");
 const asycnWrapper = require("../middleware/async");
 const { StatusCodes } = require("http-status-codes");
 const { haveCommonElements } = require("../utils/");
@@ -9,7 +10,13 @@ const updatePlayer = asycnWrapper(async (req, res) => {
     new: true,
     runValidators: true,
   });
-  res.status(StatusCodes.OK).json({ player });
+  res.status(StatusCodes.OK).json({ data: player });
+});
+
+const createEvent = asycnWrapper(async (req, res) => {
+  req.body.createdBy = req.user.userId;
+  const event = await Event.create(req.body);
+  res.status(StatusCodes.OK).json({ data: event });
 });
 
 const getPlayers = asycnWrapper(async (req, res, next) => {
@@ -28,10 +35,11 @@ const getPlayers = asycnWrapper(async (req, res, next) => {
       results.push(players[i]);
     }
   }
-  res.status(StatusCodes.OK).json({ results });
+  res.status(StatusCodes.OK).json({ data: results });
 });
 
 module.exports = {
   updatePlayer,
   getPlayers,
+  createEvent,
 };
