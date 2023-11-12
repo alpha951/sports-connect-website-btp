@@ -38,6 +38,7 @@ const loginValidator = async (req, res, next) => {
         .staus(StatusCodes.BAD_REQUEST)
         .send("please provide email and password");
     }
+    next();
   } catch (error) {
     console.log("error inside auth/login middleware");
   }
