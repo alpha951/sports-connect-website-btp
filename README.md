@@ -60,21 +60,22 @@ These instructions will get you a copy of the project up and running on your loc
         skillLevels: Intermediate
     response : 
             {
-            "data": {
-                "time": "2023-11-13T08:30:00.000Z",
-                "state": "Rajasthan",
-                "city": "Jaipur",
-                "interests": [
-                    "[Cricket, Football, Badminton]"
-                ],
-                "skillLevels": "Intermediate",
-                "createdBy": "6550c3428caab57739826338",
-                "_id": "6550c8fe46fdb89d0860e737",
-                "createdAt": "2023-11-12T12:45:50.812Z",
-                "updatedAt": "2023-11-12T12:45:50.812Z",
-                "__v": 0
+                "data": 
+                {
+                    "time": "2023-11-13T08:30:00.000Z",
+                    "state": "Rajasthan",
+                    "city": "Jaipur",
+                    "interests": [
+                        "[Cricket, Football, Badminton]"
+                    ],
+                    "skillLevels": "Intermediate",
+                    "createdBy": "6550c3428caab57739826338",
+                    "_id": "6550c8fe46fdb89d0860e737",
+                    "createdAt": "2023-11-12T12:45:50.812Z",
+                    "updatedAt": "2023-11-12T12:45:50.812Z",
+                    "__v": 0
+                }
             }
-        }
 ```
 4. 
 
