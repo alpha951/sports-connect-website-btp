@@ -15,7 +15,7 @@ const AcademySchema = new mongoose.Schema(
       required: [true, "provide state"],
     },
     city: {
-      type: String.apply,
+      type: String,
       required: [true, "provide city"],
     },
     address: String,
