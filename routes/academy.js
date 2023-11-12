@@ -11,6 +11,6 @@ const {
 
 router.route("/add-academy").post(authValidator, academyValidator, addAcademy);
 router.route("/get-academy").post(authValidator, getAcademy);
-router.route("/update-academy").patch(authValidator, updateAcademy);
+router.route("/update-academy/:id").patch(authValidator, updateAcademy);
 
 module.exports = router;
