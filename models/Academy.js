@@ -10,8 +10,14 @@ const AcademySchema = new mongoose.Schema(
       type: [String],
       required: [true, "enter atleast one sport"],
     },
-    state: String,
-    city: String,
+    state: {
+      type: String,
+      required: [true, "provide state"],
+    },
+    city: {
+      type: String.apply,
+      required: [true, "provide city"],
+    },
     address: String,
     createdBy: {
       type: mongoose.Types.ObjectId,
