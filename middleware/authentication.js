@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
+const { StatusCodes } = require("http-status-codes");
 
-const auth = async (req, res, next) => {
+const authValidator = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   try {
     const token = authHeader;
@@ -15,11 +16,13 @@ const auth = async (req, res, next) => {
   }
 };
 
-const register = async (req, res, next) => {
+const registerValidator = async (req, res, next) => {
   const data = req.body;
   try {
     if (!data.name | !data.email | !data.password | !data.gender) {
-      res.send("please provide all the required details");
+      res
+        .status(StatusCodes.BAD_REQUEST)
+        .send("please provide all the required details");
     }
     next();
   } catch (error) {
@@ -27,4 +30,17 @@ const register = async (req, res, next) => {
   }
 };
 
-module.exports = { auth, register };
+const loginValidator = async (req, res, next) => {
+  const data = req.body;
+  try {
+    if (!email || !password) {
+      return res
+        .staus(StatusCodes.BAD_REQUEST)
+        .send("please provide email and password");
+    }
+  } catch (error) {
+    console.log("error inside auth/login middleware");
+  }
+};
+
+module.exports = { authValidator, registerValidator, loginValidator };

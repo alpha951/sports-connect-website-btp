@@ -1,18 +1,18 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
-const asycnWrapper = require("../middleware/async");
 
-const register = asycnWrapper(async (req, res) => {
-  const user = await User.create(req.body);
-  const token = user.createJWT();
-  res.status(StatusCodes.CREATED).json({ token });
-});
+const register = async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    const token = user.createJWT();
+    res.status(StatusCodes.CREATED).json({ token });
+  } catch (error) {
+    console.log("error inside auth/register controller");
+  }
+};
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password) {
-    return res.send("please provide email and password");
-  }
   const user = await User.findOne({ email });
 
   if (!user) {
