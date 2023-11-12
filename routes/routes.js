@@ -1,5 +1,5 @@
 const express = require("express");
-const authenticateUser = require("../middleware/authentication");
+const { auth, register } = require("../middleware/authentication");
 const router = express.Router();
 const {
   addAcademy,
@@ -9,9 +9,9 @@ const {
   getPlayers,
 } = require("../controllers/players");
 
-router.route("/addacademy").post(authenticateUser, addAcademy);
-router.route("/editprofile").patch(authenticateUser, updatePlayer);
-router.route("/getacademy").post(authenticateUser, getAcademy);
-router.route("/getplayers").get(authenticateUser, getPlayers);
+router.route("/addacademy").post(auth, addAcademy);
+router.route("/editprofile").patch(auth, updatePlayer);
+router.route("/getacademy").post(auth, getAcademy);
+router.route("/getplayers").get(auth, getPlayers);
 
 module.exports = router;
