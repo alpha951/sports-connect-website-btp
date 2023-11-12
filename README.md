@@ -251,9 +251,48 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 
 ## Models   
+We have the following models in the database:
+[x] User
+[x] Event
+[x] Academy
 
-#### User 
+```sql
+user {
+  id string pk
+  name string
+  email string
+  password string
+  age number
+  gender string
+  state string
+  city string
+  contactNo string
+  skillLevel string
+}
 
-#### Academy
+event {
+  id string pk
+  time timestamp
+  state string
+  city string
+  interests string
+  skillLevels string
+  createdBy string fk
+}
 
-#### Event
+academy {
+  id string pk
+  name string
+  sports string
+  state string
+  city string
+  address string
+  createdBy string fk
+}
+
+event.createdBy < user.id
+academy.createdBy < user.id
+
+```
+
+![ER-Diagram](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=sufHpUTo59e4Y1nD_jNnCw)
