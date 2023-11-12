@@ -12,9 +12,11 @@ app.use(morgan("dev"));
 
 const authRouter = require("./routes/auth");
 const players = require("./routes/player");
+const academy = require("./routes/academy");
 
 app.use("/auth", authRouter);
 app.use("/play", players);
+app.use("/academy", academy);
 
 app.all("*", function (req, res) {
   res.status(404).send("not found");
