@@ -18,7 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## API Endpoints
 - [x] [POSTMAN Workspace Link](https://www.postman.com/avionics-astronomer-93868069/workspace/hobby-projects/collection/27853841-fda7f482-bc0c-4839-86d5-258af4fa2e53?action=share&creator=27853841) 
 
-### auth
+### /auth
 
 1.  <b>[POST] /auth/register </b>
 
@@ -49,7 +49,10 @@ These instructions will get you a copy of the project up and running on your loc
         password:player1@123
     response : jwt-token
 ```
-3. <b>[POST] /play/create-event</b>
+
+### /play
+
+#### 1. <b>[POST] /play/create-event</b>
 
 ```bash
     req.headers[authorization] = jwt-token
@@ -81,7 +84,7 @@ These instructions will get you a copy of the project up and running on your loc
                     }
                 }
 ```
-4. <b>[GET] /play/getplayers</b>
+#### 2. <b>[GET] /play/getplayers</b>
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
@@ -128,7 +131,7 @@ These instructions will get you a copy of the project up and running on your loc
         ]
     }
 ```
-5.  <b>[PATCH]/play/editprofile</b>
+#### 3.  <b>[PATCH]/play/editprofile</b>
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
@@ -157,7 +160,8 @@ These instructions will get you a copy of the project up and running on your loc
         }
 }
 ```
-6. <b>[POST]/academy/add-academy</b>
+### /academy
+#### 1. <b>[POST]/academy/add-academy</b>
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
@@ -187,7 +191,7 @@ These instructions will get you a copy of the project up and running on your loc
         }
 }
 ```
-7. <b>[POST]/academy/get-academy</b>
+#### 2. <b>[POST]/academy/get-academy</b>
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
@@ -218,7 +222,7 @@ These instructions will get you a copy of the project up and running on your loc
         }
 
 ```
-8. <b>[PATCH]/academy/update-academy/:id</b>
+#### 3. <b>[PATCH]/academy/update-academy/:id</b>
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
@@ -294,5 +298,4 @@ event.createdBy < user.id
 academy.createdBy < user.id
 
 ```
-
-![ER-Diagram](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=sufHpUTo59e4Y1nD_jNnCw)
+[View on Eraser![](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL/preview?elements=sufHpUTo59e4Y1nD_jNnCw&type=embed)](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=sufHpUTo59e4Y1nD_jNnCw)
