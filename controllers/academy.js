@@ -7,7 +7,7 @@ const { haveCommonElements } = require("../utils/");
 const addAcademy = asycnWrapper(async (req, res) => {
   req.body.createdBy = req.user.userId;
   const academy = await Academy.create(req.body);
-  res.status(200).json({ academy });
+  res.status(StatusCodes.OK).json({ data: academy });
 });
 
 const updateAcademy = asycnWrapper(async (req, res) => {
@@ -22,7 +22,7 @@ const updateAcademy = asycnWrapper(async (req, res) => {
       runValidators: true,
     }
   );
-  res.status(StatusCodes.OK).json({ academy });
+  res.status(StatusCodes.OK).json({ data: academy });
 });
 
 /*
@@ -42,7 +42,7 @@ const getAcademy = asycnWrapper(async (req, res, next) => {
       results.push(academies[i]);
     }
   }
-  res.status(200).json(result);
+  res.status(StatusCodes.OK).json({ data: results });
 });
 
 module.exports = {

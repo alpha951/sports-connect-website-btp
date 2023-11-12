@@ -5,7 +5,7 @@ const register = async (req, res) => {
   try {
     const user = await User.create(req.body);
     const token = user.createJWT();
-    res.status(StatusCodes.CREATED).json({ token });
+    res.status(StatusCodes.CREATED).json({ data: token });
   } catch (error) {
     console.log("error inside auth/register controller");
   }
@@ -23,7 +23,7 @@ const login = async (req, res) => {
     return res.send("Invalid Credentials");
   }
   const token = user.createJWT();
-  res.status(StatusCodes.OK).json({ token });
+  res.status(StatusCodes.OK).json({ data: token });
 };
 
 module.exports = {
