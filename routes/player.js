@@ -9,7 +9,7 @@ const {
   createEvent,
 } = require("../controllers/player");
 
-router.route("/getplayers").get(authValidator, getPlayers);
+router.route("/getplayers").post(authValidator, getPlayers);
 router.route("/editprofile").patch(authValidator, updatePlayer);
 router.route("/create-event").post(authValidator, eventValidator, createEvent);
 
