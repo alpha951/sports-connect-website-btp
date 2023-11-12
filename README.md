@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### auth
 
-    1.  [POST] /auth/register
+1.  [POST] /auth/register
 
     ```bash
         example : req.body 
@@ -40,7 +40,7 @@ These instructions will get you a copy of the project up and running on your loc
     ```
 
 
-    2. [POST] /auth/login
+2. [POST] /auth/login
     
         ```bash
             example : req.body 
@@ -48,7 +48,7 @@ These instructions will get you a copy of the project up and running on your loc
                 password:player1@123
             response : jwt-token
         ```
-    3. [POST] /play/create-event
+3. [POST] /play/create-event
 
         ```bash
             req.headers[authorization] = jwt-token
@@ -76,7 +76,7 @@ These instructions will get you a copy of the project up and running on your loc
                     }
                 }
         ```
-    4. 
+4. 
 
 
 
