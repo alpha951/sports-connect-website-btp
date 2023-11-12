@@ -53,31 +53,81 @@ These instructions will get you a copy of the project up and running on your loc
 ```bash
     req.headers[authorization] = jwt-token
     example : req.body
-        time:2023-11-13T14:00:00
-        state:Rajasthan
-        city:Jaipur
-        interests:[Cricket, Football, Badminton]
-        skillLevels: Intermediate
-    response : 
             {
-                "data": 
-                {
-                    "time": "2023-11-13T08:30:00.000Z",
-                    "state": "Rajasthan",
-                    "city": "Jaipur",
-                    "interests": [
-                        "[Cricket, Football, Badminton]"
-                    ],
-                    "skillLevels": "Intermediate",
-                    "createdBy": "6550c3428caab57739826338",
-                    "_id": "6550c8fe46fdb89d0860e737",
-                    "createdAt": "2023-11-12T12:45:50.812Z",
-                    "updatedAt": "2023-11-12T12:45:50.812Z",
-                    "__v": 0
-                }
+            "time": "2023-11-13T12:30:00.000Z",
+            "state": "Rajasthan",
+            "city": "Jaipur",
+            "interests": ["Cricket", "Football", "Badminton"],
+            "skillLevels": "Advanced"
             }
+    response : 
+                {
+                    "data": {
+                        "time": "2023-11-13T12:30:00.000Z",
+                        "state": "Rajasthan",
+                        "city": "Jaipur",
+                        "interests": [
+                            "Cricket",
+                            "Football",
+                            "Badminton"
+                        ],
+                        "skillLevels": "Advanced",
+                        "createdBy": "6550dd8ee54934227240a93c",
+                        "_id": "6550dddce54934227240a942",
+                        "createdAt": "2023-11-12T14:14:52.748Z",
+                        "updatedAt": "2023-11-12T14:14:52.748Z",
+                        "__v": 0
+                    }
+                }
 ```
-4. 
+4. [GET] /play/getplayers
+```bash
+    req.headers[authorization] = jwt-token
+    example : req.body
+         {
+            "city": "Jaipur",
+            "state": "Rajasthan",
+            "time": "2023-11-13T09:30:00.000Z"
+        }
+    response :
+    {
+        "data": [
+            {
+                "_id": "6550ddcbe54934227240a93e",
+                "time": "2023-11-13T09:30:00.000Z",
+                "state": "Rajasthan",
+                "city": "Jaipur",
+                "interests": [
+                    "Cricket",
+                    "Football",
+                    "Badminton"
+                ],
+                "skillLevels": "Advanced",
+                "createdBy": "6550dd8ee54934227240a93c",
+                "createdAt": "2023-11-12T14:14:35.744Z",
+                "updatedAt": "2023-11-12T14:14:35.744Z",
+                "__v": 0
+            },
+            {
+                "_id": "6550ddd5e54934227240a940",
+                "time": "2023-11-13T10:30:00.000Z",
+                "state": "Rajasthan",
+                "city": "Jaipur",
+                "interests": [
+                    "Cricket",
+                    "Football",
+                    "Badminton"
+                ],
+                "skillLevels": "Advanced",
+                "createdBy": "6550dd8ee54934227240a93c",
+                "createdAt": "2023-11-12T14:14:45.756Z",
+                "updatedAt": "2023-11-12T14:14:45.756Z",
+                "__v": 0
+            }
+        ]
+    }
+```
+5.  
 
 
 
