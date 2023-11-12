@@ -33,7 +33,7 @@ const registerValidator = async (req, res, next) => {
 const loginValidator = async (req, res, next) => {
   const data = req.body;
   try {
-    if (!email || !password) {
+    if (!data.email || !data.password) {
       return res
         .staus(StatusCodes.BAD_REQUEST)
         .send("please provide email and password");
