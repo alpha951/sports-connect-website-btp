@@ -20,7 +20,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### /auth
 
-1.  <b>[POST] /auth/register </b>
+#### 1.  <b>[POST] /auth/register </b>
 
 ```bash
     example : req.body 
@@ -41,7 +41,7 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 
 
-2. <b>[POST] /auth/login</b>
+#### 2. <b>[POST] /auth/login</b>
     
 ```bash
     example : req.body 
@@ -298,4 +298,5 @@ academy {
 event.createdBy < user.id
 academy.createdBy < user.id
 ```
+### DB Diagram
 [View on Eraser![](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL/preview?elements=sufHpUTo59e4Y1nD_jNnCw&type=embed)](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=sufHpUTo59e4Y1nD_jNnCw)
