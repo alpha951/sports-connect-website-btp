@@ -5,7 +5,7 @@ const {
   registerValidator,
   loginValidator,
 } = require("../middleware/authentication");
-const { register, login } = require("../constorllers/auth");
+const { register, login } = require("../controllers/auth");
 
 router.route("/register").post(registerValidator, register);
 router.route("/login").post(loginValidator, login);

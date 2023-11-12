@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 const authRouter = require("./routes/auth");
-const players = require("./routes/play");
+const players = require("./routes/player");
 
 app.use("/auth", authRouter);
 app.use("/play", players);
