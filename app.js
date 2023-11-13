@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const PORT = process.env.PORT | 3000;
+const { errorHandlerMiddleware } = require("./middleware/error-handler");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +22,8 @@ app.use("/academy", academy);
 app.all("*", function (req, res) {
   res.status(404).send("not found");
 });
+
+app.use(errorHandlerMiddleware);
 
 mongoose
   .connect(process.env.MONGO_URI)
