@@ -2,6 +2,38 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const TimeRangeSchema = new mongoose.Schema({
+  startHour: {
+    type: Number,
+    min: 0,
+    max: 23,
+    required: true,
+  },
+  endHour: {
+    type: Number,
+    min: 0,
+    max: 23,
+    required: true,
+  },
+});
+
+const AvailabilitySchema = new mongoose.Schema({
+  dayOfWeek: {
+    type: String,
+    enum: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    required: true,
+  },
+  timeRanges: TimeRangeSchema,
+});
+
 const UserSchema = new mongoose.Schema(
   {
     name: {
@@ -15,7 +47,7 @@ const UserSchema = new mongoose.Schema(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         "Please provide a valid email",
       ],
-      unique: true,
+      unique: [true, "email already exists"],
     },
     password: {
       type: String,
@@ -29,6 +61,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       enum: ["Male", "Female", "Other"],
       required: [true, "please provide gender"],
+    },
+    availability: {
+      type: [AvailabilitySchema],
     },
     state: String,
     city: String,
