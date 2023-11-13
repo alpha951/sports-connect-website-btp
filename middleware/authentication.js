@@ -12,7 +12,7 @@ const authValidator = async (req, res, next) => {
     };
     next();
   } catch (err) {
-    res.send("error");
+    throw new Error(err);
   }
 };
 
@@ -27,6 +27,7 @@ const registerValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log("Error inside auth/register middleware", error);
+    throw new Error(error);
   }
 };
 
@@ -35,12 +36,13 @@ const loginValidator = async (req, res, next) => {
   try {
     if (!data.email || !data.password) {
       return res
-        .staus(StatusCodes.BAD_REQUEST)
+        .status(StatusCodes.BAD_REQUEST)
         .send("please provide email and password");
     }
     next();
   } catch (error) {
     console.log("error inside auth/login middleware");
+    throw new Error(error);
   }
 };
 

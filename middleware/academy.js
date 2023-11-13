@@ -11,6 +11,7 @@ const academyValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log("error inside academyValidator middleware");
+    throw new Error(error);
   }
 };
 

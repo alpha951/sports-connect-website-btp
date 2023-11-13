@@ -7,7 +7,8 @@ const register = async (req, res) => {
     const token = user.createJWT();
     res.status(StatusCodes.CREATED).json({ data: token });
   } catch (error) {
-    console.log("error inside auth/register controller");
+    console.log("error inside auth/register controller", error);
+    throw new Error(error);
   }
 };
 
