@@ -1,10 +1,42 @@
 const mongoose = require("mongoose");
 
+const TimeRangeSchema = new mongoose.Schema({
+  startHour: {
+    type: Number,
+    min: 0,
+    max: 23,
+    required: true,
+  },
+  endHour: {
+    type: Number,
+    min: 0,
+    max: 23,
+    required: true,
+  },
+});
+
+const AvailabilitySchema = new mongoose.Schema({
+  dayOfWeek: {
+    type: String,
+    enum: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    required: true,
+  },
+  timeRanges: TimeRangeSchema,
+});
+
 const EventSchema = new mongoose.Schema(
   {
-    time: {
-      type: Date,
-      required: [true, "Please provide time"],
+    availability: {
+      type: [AvailabilitySchema],
+      required: [true, "Please provide your availability"],
     },
     state: {
       type: String,
