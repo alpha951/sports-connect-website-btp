@@ -52,83 +52,39 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### /play
 
-#### 1. <b>[POST] /play/create-event</b>
+#### 1. <b>[GET] /play/getplayers</b>
+```bash
+    req.headers[authorization] = jwt-token
 
-```bash
-    req.headers[authorization] = jwt-token
-    example : req.body
-            {
-            "time": "2023-11-13T12:30:00.000Z",
-            "state": "Rajasthan",
-            "city": "Jaipur",
-            "interests": ["Cricket", "Football", "Badminton"],
-            "skillLevels": "Advanced"
-            }
-    response : 
-                {
-                    "data": {
-                        "time": "2023-11-13T12:30:00.000Z",
-                        "state": "Rajasthan",
-                        "city": "Jaipur",
-                        "interests": [
-                            "Cricket",
-                            "Football",
-                            "Badminton"
-                        ],
-                        "skillLevels": "Advanced",
-                        "createdBy": "6550dd8ee54934227240a93c",
-                        "_id": "6550dddce54934227240a942",
-                        "createdAt": "2023-11-12T14:14:52.748Z",
-                        "updatedAt": "2023-11-12T14:14:52.748Z",
-                        "__v": 0
-                    }
-                }
-```
-#### 2. <b>[GET] /play/getplayers</b>
-```bash
-    req.headers[authorization] = jwt-token
-    example : req.body
-         {
-            "city": "Jaipur",
-            "state": "Rajasthan",
-            "time": "2023-11-13T09:30:00.000Z"
-        }
     response :
     {
-        "data": [
-            {
-                "_id": "6550ddcbe54934227240a93e",
-                "time": "2023-11-13T09:30:00.000Z",
-                "state": "Rajasthan",
-                "city": "Jaipur",
-                "interests": [
-                    "Cricket",
-                    "Football",
-                    "Badminton"
-                ],
-                "skillLevels": "Advanced",
-                "createdBy": "6550dd8ee54934227240a93c",
-                "createdAt": "2023-11-12T14:14:35.744Z",
-                "updatedAt": "2023-11-12T14:14:35.744Z",
-                "__v": 0
-            },
-            {
-                "_id": "6550ddd5e54934227240a940",
-                "time": "2023-11-13T10:30:00.000Z",
-                "state": "Rajasthan",
-                "city": "Jaipur",
-                "interests": [
-                    "Cricket",
-                    "Football",
-                    "Badminton"
-                ],
-                "skillLevels": "Advanced",
-                "createdBy": "6550dd8ee54934227240a93c",
-                "createdAt": "2023-11-12T14:14:45.756Z",
-                "updatedAt": "2023-11-12T14:14:45.756Z",
-                "__v": 0
-            }
-        ]
+        {
+            "data": [
+                {
+                    "name": "player2",
+                    "city": "Jaipur",
+                    "state": "Rajasthan",
+                    "gender": "Male",
+                    "interests": [
+                        "Cricket",
+                        "Football"
+                    ],
+                    "availability": [
+                        {
+                            "dayOfWeek": "Monday",
+                            "timeRanges": {
+                                "startHour": 12,
+                                "endHour": 14,
+                                "_id": "6552150c918315f662553656"
+                            },
+                            "_id": "6552150c918315f662553655"
+                        }
+                    ],
+                    "contactNo": "12345",
+                    "skillLevels": "Beginner"
+                }
+            ]
+        }
     }
 ```
 #### 3.  <b>[PATCH]/play/editprofile</b>
@@ -136,29 +92,48 @@ These instructions will get you a copy of the project up and running on your loc
     req.headers[authorization] = jwt-token
     example : req.body
         {
-            "name": "player1",
-            "email": "p1_new@mail.com",
+            "availability" : 
+            {
+                "dayOfWeek" : "Monday",
+                "timeRanges" : {
+                    "startHour" : 12,
+                    "endHour" : 14
+                }
+            }
         }
     response :
         {
-            "data": {
-                "_id": "6550c3428caab57739826338",
-                "name": "player1_new",
-                "email": "p1_new@mail.com",
-                "password": "$2a$10$gT8zNTJWeBgf1wzMZrhSWOWfTmxMKrwOkNNYtkBIukvHbHj7DAXn6",
+            "data": 
+            {
+                "_id": "655212804d6e3ca51b335468",
+                "name": "player2",
+                "email": "p2@mail.com",
+                "password": "$2a$10$6q.GaeXaK1CDpWQykF4TOuiJK3eU9JZzpd6QV7gSzYQhN/YYHHWhC",
                 "gender": "Male",
                 "state": "Rajasthan",
                 "city": "Jaipur",
                 "interests": [
-                    "[Cricket, Football]"
+                    "Cricket",
+                    "Football"
                 ],
                 "contactNo": "12345",
-                "skillLevels": "Advanced",
-                "createdAt": "2023-11-12T12:21:22.423Z",
-                "updatedAt": "2023-11-12T16:26:12.067Z",
+                "skillLevels": "Beginner",
+                "availability": [
+                    {
+                        "dayOfWeek": "Monday",
+                        "timeRanges": {
+                            "startHour": 12,
+                            "endHour": 14,
+                            "_id": "6552330e0583b50a47cbabb2"
+                        },
+                        "_id": "6552330e0583b50a47cbabb1"
+                    }
+                ],
+                "createdAt": "2023-11-13T12:11:44.901Z",
+                "updatedAt": "2023-11-13T14:30:38.188Z",
                 "__v": 0
+            }
         }
-}
 ```
 ### /academy
 #### 1. <b>[POST]/academy/add-academy</b>
