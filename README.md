@@ -257,12 +257,11 @@ These instructions will get you a copy of the project up and running on your loc
 ## Models   
 We have the following models in the database:
 [x] User
-[x] Event
 [x] Academy
 
 ```sql
 user {
-  id string pk
+  id string [pk]
   name string
   email string
   password string
@@ -273,17 +272,21 @@ user {
   contactNo string
   interests string[]
   skillLevel string
+  availability availability
 }
 
-event {
-  id string pk
-  time timestamp
-  state string
-  city string
-  interests string[]
-  skillLevels string
-  createdBy string fk
+timeRange {
+  id string [pk]
+  startHour number
+  endHour number
 }
+
+availability {
+  id string [pk]
+  dayOfWeek string
+  timeRange timeRange
+}
+
 
 academy {
   id string pk
@@ -295,8 +298,7 @@ academy {
   createdBy string fk
 }
 
-event.createdBy < user.id
 academy.createdBy < user.id
 ```
 ### DB Diagram
-[View on Eraser![](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL/preview?elements=sufHpUTo59e4Y1nD_jNnCw&type=embed)](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=sufHpUTo59e4Y1nD_jNnCw)
+[View on Eraser![](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL/preview?elements=NoaseuTABsq7I4a6-P4ygw&type=embed)](https://app.eraser.io/workspace/6MJrIkUNion5y0PEcsXL?elements=NoaseuTABsq7I4a6-P4ygw)
