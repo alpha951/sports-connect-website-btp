@@ -173,7 +173,7 @@ These instructions will get you a copy of the project up and running on your loc
         {
             "city" : "Jaipur", #required
             "state" : "Rajasthan", #required
-            "sports" : "Cricket", #required
+            "sports" : ["Cricket", "Football"], #required
         }
     response:
         {
@@ -183,7 +183,8 @@ These instructions will get you a copy of the project up and running on your loc
                     "name": "academy1",
                     "sports": [
                         "Cricket",
-                        "Football"
+                        "Football",
+                        "Badminton"
                     ],
                     "state": "Rajasthan",
                     "city": "Jaipur",
