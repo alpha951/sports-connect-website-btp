@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const PORT = process.env.PORT | 3000;
 const { errorHandlerMiddleware } = require("./middleware/error-handler");
+const colors = require("@colors/colors");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,9 +29,9 @@ app.use(errorHandlerMiddleware);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("App connected to database");
+    console.log("App connected to database".rainbow);
     app.listen(PORT, function () {
-      console.log(`App listening on port ${PORT}!`);
+      console.log(`App listening on port ${PORT}!`.brightCyan.bgMagenta);
     });
   })
   .catch((error) => {

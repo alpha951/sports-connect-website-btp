@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
+const colors = require("@colors/colors");
 
 const register = async (req, res) => {
   try {
@@ -7,7 +8,7 @@ const register = async (req, res) => {
     const token = user.createJWT();
     res.status(StatusCodes.CREATED).json({ data: token });
   } catch (error) {
-    console.log("error inside auth/register controller", error);
+    console.log(colors.red("error inside auth/register controller"), error);
     throw new Error(error);
   }
 };

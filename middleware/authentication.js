@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
+const colors = require("@colors/colors");
 
 const authValidator = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -41,7 +42,7 @@ const loginValidator = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    console.log("error inside auth/login middleware");
+    console.log("error inside auth/login middleware".red, error);
     throw new Error(error);
   }
 };
