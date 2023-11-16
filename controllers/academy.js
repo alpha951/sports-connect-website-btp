@@ -32,13 +32,15 @@ const updateAcademy = asycnWrapper(async (req, res) => {
    3. sports of interest
 */
 const getAcademy = asycnWrapper(async (req, res, next) => {
+  const user = await User.findById(req.user.userId)
   const queryObject = {};
-  queryObject.state = req.body.state;
-  queryObject.city = req.body.city;
+  queryObject.state = user.state;
+  queryObject.city = user.city;
   const academies = await Academy.find(queryObject);
   let results = [];
   for (let i = 0; i < academies.length; i++) {
     if (haveCommonElements(academies[i].sports, req.body.sport)) {
+      academies[i].sports = [req.body.sport]
       results.push(academies[i]);
     }
   }
