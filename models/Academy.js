@@ -19,6 +19,7 @@ const AcademySchema = new mongoose.Schema(
       required: [true, "provide city"],
     },
     address: String,
+    contactNo: String,
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
