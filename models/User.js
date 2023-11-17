@@ -2,38 +2,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const TimeRangeSchema = new mongoose.Schema({
-  startHour: {
-    type: Number,
-    min: 0,
-    max: 23,
-    required: true,
-  },
-  endHour: {
-    type: Number,
-    min: 0,
-    max: 23,
-    required: true,
-  },
-});
-
-const AvailabilitySchema = new mongoose.Schema({
-  dayOfWeek: {
-    type: String,
-    enum: [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ],
-    required: true,
-  },
-  timeRanges: TimeRangeSchema,
-});
-
 const UserSchema = new mongoose.Schema(
   {
     name: {
@@ -71,6 +39,36 @@ const UserSchema = new mongoose.Schema(
       type: [String],
     },
     contactNo: String,
+    availability: [
+      {
+        dayOfWeek: {
+          type: String,
+          enum: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ],
+          required: true,
+        },
+        startHour: {
+          type: Number,
+          min: 0,
+          max: 23,
+          required: true,
+        },
+        endHour: {
+          type: Number,
+          min: 0,
+          max: 23,
+          required: true,
+        },
+      },
+    ],
+
     skillLevels: {
       type: String,
       enum: ["Beginner", "Intermediate", "Advanced"],
