@@ -9,9 +9,8 @@ function areUsersAvailable(user1, user2) {
     for (const availability2 of user2.availability) {
       if (
         availability1.dayOfWeek === availability2.dayOfWeek &&
-        availability1.timeRanges.startHour ===
-          availability2.timeRanges.startHour &&
-        availability1.timeRanges.endHour === availability2.timeRanges.endHour
+        availability1.startHour === availability2.startHour &&
+        availability1.endHour === availability2.endHour
       ) {
         matchingTime.push(availability1);
       }
